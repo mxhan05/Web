@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mohan R | Portfolio</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Segoe UI',sans-serif;
+}
+
+body{
+    background:linear-gradient(135deg,#0b1f17,#0f2d24,#123a2d);
+    color:#e6f5ee;
+    overflow-x:hidden;
+    opacity:0;
+    animation:fadeInBody 1s ease-out .5s forwards;
+}
+
+body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    background:linear-gradient(45deg,#2ecc71,#1abc9c,#27ae60,#16a085);
+    background-size:400% 400%;
+    animation:gradient 15s ease infinite;
+    opacity:.12;
+    z-index:-1;
+}
+
+@keyframes gradient{
+    0%{background-position:0% 50%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 50%}
+}
+@keyframes fadeInBody{to{opacity:1}}
+
+nav{
+    position:fixed;
+    top:0;
+    width:100%;
+    display:flex;
+    justify-content:space-between;
+    padding:1rem 2rem;
+    background:rgba(11,31,23,.9);
+    backdrop-filter:blur(10px);
+    z-index:1000;
+    transition:.3s;
+}
+
+nav.scrolled{
+    padding:.5rem 2rem;
+    background:rgba(11,31,23,.95);
+}
+
+nav a{
+    color:#e6f5ee;
+    text-decoration:none;
+    margin-left:1rem;
+    position:relative;
+    transition:.3s;
+}
+
+nav a::after{
+    content:'';
+    position:absolute;
+    bottom:-5px;
+    left:0;
+    width:0;
+    height:2px;
+    background:#2ecc71;
+    transition:.3s;
+}
+
+nav a:hover::after{width:100%}
+nav a:hover{color:#2ecc71}
+
+.logo{
+    font-size:1.4rem;
+    font-weight:bold;
+    color:#2ecc71;
+}
+
+.hero{
+    height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding:2rem;
+}
+
+.hero h1{
+    font-size:3.5rem;
+    background:linear-gradient(45deg,#2ecc71,#1abc9c);
+    -webkit-background-clip:text;
+    color:transparent;
+    animation:slideTop 1s ease;
+}
+
+.hero .role{
+    font-size:1.4rem;
+    margin:1rem 0;
+    color:#b9e5d1;
+    animation:slideBottom 1s ease .2s both;
+}
+
+.hero .tagline{
+    font-size:1.1rem;
+    margin-bottom:2rem;
+    animation:slideBottom 1s ease .4s both;
+}
+
+.hero button{
+    padding:1rem 2rem;
+    border:none;
+    border-radius:50px;
+    background:linear-gradient(45deg,#2ecc71,#1abc9c);
+    font-weight:bold;
+    cursor:pointer;
+    transition:.3s;
+    animation:slideBottom 1s ease .6s both;
+}
+
+.hero button:hover{
+    transform:translateY(-3px);
+    box-shadow:0 10px 25px rgba(46,204,113,.35);
+}
+
+@keyframes slideTop{
+    from{opacity:0;transform:translateY(-40px)}
+    to{opacity:1;transform:none}
+}
+@keyframes slideBottom{
+    from{opacity:0;transform:translateY(40px)}
+    to{opacity:1;transform:none}
+}
+
+section{
+    padding:5rem 2rem;
+    max-width:1100px;
+    margin:auto;
+    opacity:0;
+    transform:translateY(40px);
+    transition:1s ease;
+}
+section.show{
+    opacity:1;
+    transform:none;
+}
+
+h2{
+    text-align:center;
+    font-size:2.4rem;
+    margin-bottom:2rem;
+    position:relative;
+}
+
+h2::after{
+    content:'';
+    position:absolute;
+    bottom:-10px;
+    left:50%;
+    transform:translateX(-50%);
+    width:60px;
+    height:3px;
+    background:linear-gradient(45deg,#2ecc71,#1abc9c);
+}
+
+.about-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:3rem;
+    align-items:center;
+}
+
+.about-img{
+    width:200px;
+    height:200px;
+    border-radius:50%;
+    background:linear-gradient(45deg,#2ecc71,#1abc9c);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:4rem;
+    color:#0b1f17;
+    margin:auto;
+    animation:float 3s ease-in-out infinite;
+}
+
+@keyframes float{
+    0%,100%{transform:translateY(0)}
+    50%{transform:translateY(-10px)}
+}
+
+.grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:2rem;
+}
+
+.card{
+    background:rgba(255,255,255,.07);
+    border-radius:15px;
+    padding:2rem;
+    transition:.4s;
+}
+
+.card:hover{
+    transform:translateY(-12px);
+    background:rgba(255,255,255,.12);
+    box-shadow:0 20px 40px rgba(0,0,0,.25);
+}
+
+.card h3{
+    color:#2ecc71;
+    margin-bottom:1rem;
+}
+
+footer{
+    text-align:center;
+    padding:2rem;
+    background:rgba(11,31,23,.9);
+}
+
+@media(max-width:768px){
+    .about-grid{grid-template-columns:1fr}
+    .hero h1{font-size:2.4rem}
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+<div class="logo">Mohan R</div>
+<div>
+<a href="#about">About</a>
+<a href="#skills">Skills</a>
+<a href="#projects">Projects</a>
+<a href="#education">Education</a>
+<a href="#contact">Contact</a>
+</div>
+</nav>
+
+<section class="hero">
+<div>
+<h1>Mohan R</h1>
+<div class="role">B.E CSE Student | Developer</div>
+<div class="tagline">
+Motivated developer with strong CS fundamentals and interest in real-world problem solving.
+</div>
+<button onclick="document.getElementById('projects').scrollIntoView({behavior:'smooth'})">
+View Projects
+</button>
+</div>
+</section>
+
+<section id="about">
+<h2>About Me</h2>
+<div class="about-grid">
+<div>
+<p>
+I am a Computer Science Engineering student with a solid foundation in programming,
+data structures, operating systems and DBMS.
+</p><br>
+<p>
+I enjoy building practical applications and continuously upgrading my technical skills.
+</p>
+</div>
+<div class="about-img">👨‍💻</div>
+</div>
+</section>
+
+<section id="skills">
+<h2>Skills</h2>
+<div class="grid">
+<div class="card"><h3>Programming</h3><p>C, Java, Python, SQL</p></div>
+<div class="card"><h3>Web</h3><p>HTML, CSS, JavaScript, React</p></div>
+<div class="card"><h3>Core CS</h3><p>DSA, OS, DBMS</p></div>
+<div class="card"><h3>Tools</h3><p>AWS, Git, Linux</p></div>
+</div>
+</section>
+
+<section id="projects">
+<h2>Projects</h2>
+<div class="grid">
+<div class="card">
+<h3>Grocery Management System</h3>
+<p>Full-stack web application for managing grocery orders.</p>
+</div>
+<div class="card">
+<h3>Airline Ticket Booking System</h3>
+<p>Java-based desktop application for ticket booking.</p>
+</div>
+<div class="card">
+<h3>Airline Cargo Management</h3>
+<p>System for cargo booking and tracking.</p>
+</div>
+</div>
+</section>
+
+<section id="education">
+<h2>Education</h2>
+<div class="grid">
+<div class="card">
+<h3>B.E Computer Science & Engineering</h3>
+<p>2023 – Present</p>
+</div>
+<div class="card">
+<h3>HSC</h3>
+<p>2022 – 2023</p>
+</div>
+<div class="card">
+<h3>SSLC</h3>
+<p>2020 – 2021</p>
+</div>
+</div>
+</section>
+
+<section id="contact">
+<h2>Contact</h2>
+<div class="grid">
+<div class="card"><p>mohan@gmail.com</p></div>
+<div class="card"><p>github.com/mohan</p></div>
+<div class="card"><p>linkedin.com/in/mohan</p></div>
+</div>
+</section>
+
+<footer>
+© 2025 Mohan R
+</footer>
+
+<script>
+const sections=document.querySelectorAll("section");
+const nav=document.querySelector("nav");
+
+const reveal=()=>{
+sections.forEach(s=>{
+if(s.getBoundingClientRect().top<innerHeight-100)
+s.classList.add("show");
+});
+}
+
+window.addEventListener("scroll",()=>{
+nav.classList.toggle("scrolled",scrollY>50);
+reveal();
+});
+
+window.addEventListener("load",reveal);
+</script>
+
+</body>
+</html>
